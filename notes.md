@@ -34,3 +34,13 @@ Added Bonus Goal: Allow the user to sort by Rotten Tomatoes Rating (asc or desc)
 1. Create the callback functions inside of .then and .catch, respectively.
 1. The .catch() callback function should accept a parameter and use that parameter to console.error() whatever it caught.
 1. The .then() callback function should accept a parameter. It will use that parameter to console.log as well as set the state variable.
+
+## Add CSS Styling to Make it Look Pretty
+This is very style-based, up to you. How do you want it to look?
+Some Questions to consider:
+1. What should the overall layout be? (Think flex and/or grid)
+1. What background do you want?
+1. How big should the font sizes be?
+1. How much spacing should there be between elements? (Think padding and margin)
+1. Should anything have a border?
+1. Can we add any other colors to highlight or liven up anything?
