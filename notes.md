@@ -30,10 +30,12 @@ Added Bonus Goal: Allow the user to sort by Rotten Tomatoes Rating (asc or desc)
 ### Consume the Fetch Promise
 1. Make sure you didn't put a semicolon after your `fetch()`
 1. Call the `.then()` method
+1. Call the `.then()` method a second time
 1. Call the `.catch()` method
 1. Create the callback functions inside of .then and .catch, respectively.
 1. The .catch() callback function should accept a parameter and use that parameter to console.error() whatever it caught.
-1. The .then() callback function should accept a parameter. It will use that parameter to console.log as well as set the state variable.
+1. The first .then() callback function will accept a parameter for the response object. It should call the `.json()` method on that object and return it.
+1. The second .then() callback function should accept a parameter for the actual data that we wanted to get. It will use that parameter to console.log as well as set the state variable.
 
 ## Add CSS Styling to Make it Look Pretty
 This is very style-based, up to you. How do you want it to look?
