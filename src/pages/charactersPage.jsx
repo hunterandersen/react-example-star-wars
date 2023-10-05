@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 function CharactersPage() {
 
   const [people, setPeople] = useState([]);
+  //Grab a reference to the navigation function to be used later
+  const navigate = useNavigate();
 
   //The effect happens AFTER the function finishes (displays the JSX)
   useEffect(() => {
@@ -12,7 +15,6 @@ function CharactersPage() {
       return response.json();
     })
     .then((result) => {
-      console.log(result);
       setPeople(result.results);
     })
     .catch((err) => console.error(err));
@@ -32,6 +34,7 @@ function CharactersPage() {
   return (
     <div>
       <h1>Star Wars People</h1>
+      <Outlet />
       <ul>
         {alphabeticalPeople.map((person, index) => {
           let color = person.eye_color;
@@ -39,10 +42,21 @@ function CharactersPage() {
           if (color.includes("-")){
             trueEyeColor = color.slice(color.indexOf("-")+1)
           }
+          //Extract the character's number from the end of the url
+          const charNumber = person.url.match(/\/(\d+)\/$/)[1];
+
           return <li
            className='star-wars-card'
            style={{backgroundColor: trueEyeColor}}
            key={index}
+           onClick={() => {
+            //Send the user to the page that will show the specific character's information
+            //Notice how the end of the url changes when you click on a character
+            navigate(`${charNumber}`, { 
+              state: {
+                character: person
+              }
+          })}}
            >
             <h2>{person.name}</h2>
             <p>{person.gender}</p>

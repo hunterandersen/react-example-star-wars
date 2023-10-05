@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import CharactersPage from "./pages/charactersPage";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
+import SingleCharacterPage from "./pages/SingleCharacterPage";
 import './App.css';
 
 //1. Install react-router-dom
@@ -14,7 +15,7 @@ import './App.css';
 export default function App() {
   return (
     <BrowserRouter>
-      <nav>
+      <nav className="navbar">
         <ul>
           <li>
             <NavLink to="/">Home</NavLink>
@@ -30,7 +31,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/characters" element={<CharactersPage />} />
+        <Route path="/characters" element={<CharactersPage />} >
+          <Route path=":swNumber" element={<SingleCharacterPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )
