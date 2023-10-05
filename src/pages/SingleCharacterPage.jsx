@@ -9,6 +9,7 @@ export default function SingleCharacterPage() {
 
   useEffect(() => {
     const { character } = state;
+    //Fetch the character's species info, if there is any
     if (character.species.length > 0) {
       fetch(character.species[0])
         .then((response) => response.json())
@@ -19,6 +20,7 @@ export default function SingleCharacterPage() {
     } else {
       setSpeciesData(null);
     }
+    //Fetch the character's homeworld info, if there is any
     if (character.homeworld) {
       fetch(character.homeworld)
         .then((response) => response.json())
@@ -33,7 +35,7 @@ export default function SingleCharacterPage() {
 
   return (
     <>
-      <h2>Character: </h2>
+      <h2>Character: {state.character.name}</h2>
       <p>Character Number is {swNumber}</p>
       <div className="tables-grid">
         {speciesData && (

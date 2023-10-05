@@ -15,6 +15,7 @@ function CharactersPage() {
       return response.json();
     })
     .then((result) => {
+      console.log(result);
       setPeople(result.results);
     })
     .catch((err) => console.error(err));
@@ -56,7 +57,7 @@ function CharactersPage() {
               state: {
                 character: person
               }
-          })}}
+            })}}
            >
             <h2>{person.name}</h2>
             <p>{person.gender}</p>
