@@ -1,3 +1,8 @@
+@font-face {
+  font-family: SomeName;
+  src: url('./assets/Starjout.ttf') format('truetype');
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -46,4 +51,18 @@
 
 .myCoolClass {
   color: red;
+}
+
+.star-wars-card {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid brown;
+  margin-bottom: .5rem;
+}
+
+.star-wars-card > * {
+  margin: 0;
+  text-shadow: 0px 2px 4px black;
 }

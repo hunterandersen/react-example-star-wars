@@ -1,36 +1,37 @@
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
+import CharactersPage from "./pages/charactersPage";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import './App.css';
 
-function App() {
+//1. Install react-router-dom
+//2. Wrap the application in BrowserRouter
+//3. Set up the Routes and Route
+//4. Each Route wants a path and an element
+//5. Set up user navigation using NavLink elements
+  //NavLinks want a to attribute and text to show
 
-  const [people, setPeople] = useState([]);
-
-  //The effect happens AFTER the function finishes (displays the JSX)
-  useEffect(() => {
-    //Fetch returns 
-    fetch(`https://swapi.dev/api/people`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      console.log(result);
-      setPeople(result.results);
-    })
-    .catch((err) => console.error(err));
-  }, []);
-  //Dependency Array
-  //The effect will only run if an item inside of the array has changed since the last time the effect happened
-
+export default function App() {
   return (
-    <div>
-      <h1>Star Wars People</h1>
-      <ul>
-        {people.map((person, index) => {
-          return <li key={index}>{person.name}</li>
-        })}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+          <li>
+            <NavLink to="/characters">Characters</NavLink>
+          </li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/characters" element={<CharactersPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
-
-export default App
